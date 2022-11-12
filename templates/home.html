@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <title>Resume Uploader</title>
+</head>
+<body class="p-5">
+    <div class="container">
+    <h1 class="text-center bg-danger p-2">Resume Uploader</h1>
+    <div class="row mt-3">
+        <div class="col-8">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="name">Full Name:</label>
+                <input type="text" name="name" id="name" class="form-control" required>
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" name="dob" id="dob" class="form-control" required>
+
+                <label>Gender:</label>
+                <input type="radio" value="male" name="gen">Male
+                <input type="radio" value="female" name="gen">Female
+                <br>
+
+                <label for="locality">Locality:</label>
+                <input type="text" name="locality" id="locality" class="form-control" required>
+
+                <label for="city">City:</label>
+                <input type="text" name="city" id="city" class="form-control" required>
+
+                <label for="code">Pin Code:</label>
+                <input type="text" name="code" id="code" class="form-control" required> 
+                
+
+                <label for="state">State:</label>
+                <select name="state" id="state" class="form-control" required>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Banglore">Banglore</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Punjab">Punjab</option>
+                </select>
+
+                <label for="mob">Mobile No:</label>
+                <input type="number" id="mob" name="mob" class="form-control" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+
+                <p>JOB location</p>
+                <input type="checkbox" value="Delhi"  name="jobloc">Delhi
+                <input type="checkbox" value="Pune"  name="jobloc">Pune
+                <input type="checkbox" value="Banglore" name="jobloc">Banglore
+                <input type="checkbox" value="Mumbai" name="jobloc">Mumbai
+                <br>
+                <br>
+                <label>Profile Image:</label>
+                <input type="file" name="img" required>
+                <br>
+                <br>
+                <label>Resume:</label>
+                <input type="file" name="doc" required>
+
+                <br>
+                <br>
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+        </div>
+        <div class="col-4 shadow">
+            <h3 class="text-center">List Candidate</h3>
+            <ul class="list-group">
+                {% for i in data %}
+                <li class="list-group-item">{{forloop.counter}}. &nbsp; &nbsp;<a href="resume/{{i.id}}" class="text-decoration-none">{{i.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

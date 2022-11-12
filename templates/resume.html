@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <title>Resume Uploader</title>
+    <style>
+        ul li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h2 class="p-3 bg-danger text-center">Candidate Deatail</h2>
+    <div class="mt-2 shadow">
+        <h4 class="text-center">Resume</h4>
+        {% for i in data %}
+        <img src="{{i.img.url}}" height="130px" width="120px">
+            <p>Name:{{i.name}}</p>
+            <p>DOB:{{i.dob}}</p>
+            <p>Gender:{{i.gen}}</p>
+            <p>Address:{{i.locality}} ,{{i.city}} {{i.code}} ,{{i.state}}</p>
+            <p>Mobile:{{i.mob}}</p>
+            <p>Email:{{i.email}}</p>
+            <p>Job city:{{i.jobloc}}</p>
+            <p>Attachment:<a download href="{{i.doc.url}}">dowload file</a></p>
+        {% endfor %}
+    </div>
+    </div>
+</body>
+</html>
